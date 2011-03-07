@@ -24,6 +24,14 @@ module Liker
       end
     end
     
+    helpers do
+      def likeable( title, image )
+        @like_url   = request.url
+        @like_title = title
+        @like_image = image
+      end
+    end
+    
     get "/" do
       haml :index, :locals => { :title => "Liker", :photos => @@photos }, :layout => false
     end
@@ -31,6 +39,7 @@ module Liker
     get "/:name" do
       name = params[:name]
       if file = @@photos[name] then
+        likeable( name, url(file) )
         haml :page, :locals => { :title => name, :file => file }
       end
     end  
@@ -44,12 +53,14 @@ __END__
 %html{ :xmlns => "http://www.w3.org/1999/xhtml", :"xmlns:og" => "http://ogp.me/ns#", :"xmlns:fb" => "http://www.facebook.com/2008/fbml" }
   %head
     %title= title
-    %meta{ :property => "og:title",     :content => title }
-    %meta{ :property => "og:type",      :content => "blog" }
-    %meta{ :property => "og:url",       :content => "http://localhost/#{title}" }
-    %meta{ :property => "og:image",     :content => "http://localhost/#{file}" }
-    %meta{ :property => "og:site_name", :content => "Liker" }
-    %meta{ :property => "fb:app_id",    :content => "208298742518293" }
+    - if @like_url then
+      %meta{ :property => "og:title",     :content => @like_title }
+      %meta{ :property => "og:type",      :content => "blog" }
+      %meta{ :property => "og:url",       :content => @like_url }
+      %meta{ :property => "og:image",     :content => @like_image }
+      %meta{ :property => "og:site_name", :content => "Liker" }
+      %meta{ :property => "fb:app_id",    :content => "199890130028792" }
+      %meta{ :property => "fb:admins",    :content => "1664736154" }
   %body
     %div#wrapper
       = yield
@@ -60,7 +71,8 @@ __END__
     %a{ :href => ("/#{name}") }= name
 
 @@ page
-%div.title= title
-%img{ :src => ("/#{file}"), :width => "100%" }
+%h1.title= title
+%div.photo
+  %img{ :src => ("/#{file}"), :"max-width" => "640", :"max-height" => "640" }
 %script{ :src => "http://connect.facebook.net/en_US/all.js#xfbml=1" }
-%fb:like{ :href => "http://localhost/#{title}", :show_faces => true, :width => 450 }
+%fb:like{ :href => @like_url, :show_faces => true, :width => 450 }
