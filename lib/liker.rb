@@ -1,0 +1,3 @@
+module Liker
+  # Your code goes here...
+end
