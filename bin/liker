@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+puts "#{$0} Requiring Liker"
+require File.dirname(__FILE__) + '/../lib/liker'
+
+puts "#{$0} Requiring Thin"
+require 'thin'
+
+rackup_file = "#{ File.dirname(__FILE__) }/../config.ru" # ./bin/foo -> ./config.ru
+
+# Server options: --address --port --chdir
+# Adapter options: --environment
+# Daemon options: --daemonize --log --pid
+# Other options: --debug --trace
+
+argv = [ "-R", rackup_file ] + ARGV
+puts "#{$0} Running Thin with #{argv.inspect}"
+Thin::Runner.new( argv ).run! # @see http://code.macournoyer.com/thin/doc/classes/Thin/Runner.html
