@@ -78,6 +78,9 @@ __END__
 %div#fb-root
 %script{ :src => "http://connect.facebook.net/en_US/all.js#appId=199890130028792&amp;xfbml=1" }
 %fb:like{ :href => @like_url, :show_faces => true, :width => 450 }
+%hr
 %fb:comments{ :href => @like_url, :num_posts => 2, :width => 450 }
+%hr
 %fb:recommendations{ :site => @this_domain, :width => 300, :height => 300, :header => "true" }
-%fb:activity{ :site => "example.com", :width => "300", :height => "300", :header => "true", :recommendations => "false" }
+%hr
+%fb:activity{ :site => @this_domain, :width => "300", :height => "300", :header => "true", :recommendations => "false" }
