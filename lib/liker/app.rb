@@ -26,9 +26,10 @@ module Liker
     
     helpers do
       def likeable( title, image )
-        @like_url   = request.url
-        @like_title = title
-        @like_image = image
+        @this_domain = request.host
+        @like_url    = request.url
+        @like_title  = title
+        @like_image  = image
       end
     end
     
@@ -74,5 +75,9 @@ __END__
 %h1.title= title
 %div.photo
   %img{ :src => ("/#{file}"), :"max-width" => "640", :"max-height" => "640" }
-%script{ :src => "http://connect.facebook.net/en_US/all.js#xfbml=1" }
+%div#fb-root
+%script{ :src => "http://connect.facebook.net/en_US/all.js#appId=199890130028792&amp;xfbml=1" }
 %fb:like{ :href => @like_url, :show_faces => true, :width => 450 }
+%fb:comments{ :href => @like_url, :num_posts => 2, :width => 450 }
+%fb:recommendations{ :site => @this_domain, :width => 300, :height => 300, :header => "true" }
+%fb:activity{ :site => "example.com", :width => "300", :height => "300", :header => "true", :recommendations => "false" }
