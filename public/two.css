@@ -1,0 +1,59 @@
+body {
+  margin:   0 0 0 0;
+  padding:  0 0 0 0;
+}
+
+#header {
+  clear:both;
+  float:left;
+  width:100%;
+  border-bottom:1px solid #000;
+}
+
+.colmask {
+  position: relative;   /* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
+  clear:    both;
+  float:    left;
+  width:    100%;     /* width of whole page */
+  overflow: hidden; /* This chops off any overhanging divs */
+}
+
+.rightmenu {
+    background: #ff9;
+}
+
+.rightmenu .colleft {
+  float:        left;
+  width:        200%;
+  margin-left:  -400px;
+  position:     relative;
+  right:        100%;
+  background:   #fff;
+}
+
+.rightmenu .col1wrap {
+  float:          left;
+  width:          50%;
+  position:       relative;
+  left:           50%;
+  padding-bottom: 1em;
+}
+
+.rightmenu .col1 {
+  margin:     0 15px 0 415px;
+  overflow:   hidden;
+}
+
+.rightmenu .col2 {
+  float:      right;
+  width:      370px;
+  position:   relative;
+  left:       385px;
+}
+
+#footer {
+  clear:      both;
+  float:      left;
+  width:      100%;
+  border-top: 1px solid #000;
+}

@@ -44,7 +44,7 @@ module Liker
         haml :page, :locals => { :title => name, :file => file }
       end
     end  
-
+    
   end # App
 end # Liker
 
@@ -72,15 +72,23 @@ __END__
     %a{ :href => ("/#{name}") }= name
 
 @@ page
-%h1.title= title
-%div.photo
-  %img{ :src => ("/#{file}"), :"max-width" => "640", :"max-height" => "640" }
+%link{ :rel => "stylesheet", :href => "/two.css", :type => "text/css" }
+%div#header
+  %h1.title= title
+%div.colmask.rightmenu
+  %div.colleft
+    %div.col1wrap
+      %div.col1
+        %div.photo
+          %img{ :src => ("/#{file}"), :"max-width" => "640", :"max-height" => "640" }
+  %div.col2
+    %fb:like{ :href => @like_url, :show_faces => true, :width => 300 }
+    %br
+    %fb:recommendations{ :site => @this_domain, :width => 300, :height => 300, :header => "true" }
+    %br
+    %fb:activity{ :site => @this_domain, :width => "300", :height => "300", :header => "true", :recommendations => "false" }
+    %br
+    %fb:comments{ :href => @like_url, :num_posts => 2, :width => 300 }
+%div#footer
 %div#fb-root
 %script{ :src => "http://connect.facebook.net/en_US/all.js#appId=199890130028792&amp;xfbml=1" }
-%fb:like{ :href => @like_url, :show_faces => true, :width => 450 }
-%hr
-%fb:comments{ :href => @like_url, :num_posts => 2, :width => 450 }
-%hr
-%fb:recommendations{ :site => @this_domain, :width => 300, :height => 300, :header => "true" }
-%hr
-%fb:activity{ :site => @this_domain, :width => "300", :height => "300", :header => "true", :recommendations => "false" }
