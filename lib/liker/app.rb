@@ -75,6 +75,7 @@ __END__
       %meta{ :property => "og:image",     :content => @like_image }
       %meta{ :property => "og:site_name", :content => "Liker" }
       %meta{ :property => "fb:app_id",    :content => @this_app_id }
+      %meta{ :property => "fb:admins",    :content => "1664736154" }
   %body
     %div#wrapper
       = yield
