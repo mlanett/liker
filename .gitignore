@@ -1,6 +1,9 @@
 *.gem
-.DS_Store
 .bundle
+.DS_Store
 log
 pkg/*
+public/*.jpeg
+public/*.jpg
+public/*.png
 tmp
