@@ -1,4 +1,6 @@
 source "http://rubygems.org"
 
-# Specify your gem's dependencies in liker.gemspec
-gemspec
+gem "haml"
+gem "rack-fiber_pool"
+gem "sinatra"
+gem "thin"

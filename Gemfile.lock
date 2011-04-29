@@ -1,24 +1,15 @@
-PATH
-  remote: .
-  specs:
-    liker (0.0.1)
-      haml
-      rack-fiber_pool
-      sinatra
-      thin
-
 GEM
   remote: http://rubygems.org/
   specs:
-    daemons (1.1.0)
+    daemons (1.1.2)
     eventmachine (0.12.10)
     haml (3.0.25)
-    rack (1.2.1)
+    rack (1.2.2)
     rack-fiber_pool (0.9.1)
-    sinatra (1.2.0)
+    sinatra (1.2.3)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
-    thin (1.2.8)
+    thin (1.2.11)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
@@ -29,7 +20,6 @@ PLATFORMS
 
 DEPENDENCIES
   haml
-  liker!
   rack-fiber_pool
   sinatra
   thin
