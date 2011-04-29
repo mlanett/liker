@@ -1,14 +1,29 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    backports (2.1.0)
+    clogger (0.9.0)
+      rack (> 0.9)
     daemons (1.1.2)
     eventmachine (0.12.10)
     haml (3.0.25)
+    monkey-lib (0.5.4)
+      backports
     rack (1.2.2)
     rack-fiber_pool (0.9.1)
     sinatra (1.2.3)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
+    sinatra-advanced-routes (0.5.1)
+      monkey-lib (~> 0.5.0)
+      sinatra (~> 1.0)
+      sinatra-sugar (~> 0.5.0)
+    sinatra-reloader (0.5.0)
+      sinatra (~> 1.0)
+      sinatra-advanced-routes (~> 0.5.0)
+    sinatra-sugar (0.5.0)
+      monkey-lib (~> 0.5.0)
+      sinatra (~> 1.0)
     thin (1.2.11)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -19,7 +34,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  clogger
   haml
   rack-fiber_pool
   sinatra
+  sinatra-reloader
   thin

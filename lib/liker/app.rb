@@ -1,7 +1,8 @@
+require "clogger"
 require "erb"
+require "logger"
 require "rack/fiber_pool" # fibers
 require "sinatra/base" # http://www.sinatrarb.com/intro
-require "logger"
 
 module Liker
   class App < Sinatra::Base
@@ -9,8 +10,8 @@ module Liker
     LIKER_ML = 144834555585360
     LIKER_B  = 199890130028792
     
-    use Rack::CommonLogger, Logger.new(STDOUT)
     use Rack::FiberPool, :size => 100 # fibers
+    use Clogger, :format => '$status "$request" ($request_time)', :logger => $stdout, :reentrant => true
     
     configure do
       set :app_id,            development? && LIKER_ML || LIKER_B
