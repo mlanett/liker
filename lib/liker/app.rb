@@ -1,17 +1,16 @@
-require "rack/fiber_pool"
+require "erb"
+require "rack/fiber_pool" # fibers
 require "sinatra/base" # http://www.sinatrarb.com/intro
 
 module Liker
   class App < Sinatra::Base
     
-    use Rack::FiberPool, :size => 10
+    use Rack::FiberPool, :size => 100 # fibers
     
     configure do
+      set :app_file, __FILE__ # or could set public and views
       set :inline_templates,  true
-      set :logging,           true
       set :public,            "public"
-      set :raise_errors,      true
-      set :show_exceptions,   true
       
       @@photos = {}
       pubdir = File.expand_path("../../../public", __FILE__)
@@ -23,8 +22,14 @@ module Liker
       end
     end
     
+    configure :development, :test do
+      set :logging,         true
+      set :raise_errors,    true
+      set :show_exceptions, true
+    end
+    
     helpers do
-      def likeable( title, image )
+      def fbconnect( title, image )
         @this_domain = request.host
         @like_url    = request.url
         @like_title  = title
@@ -39,7 +44,7 @@ module Liker
     get "/:name" do
       name = params[:name]
       if file = @@photos[name] then
-        likeable( name, url(file) )
+        fbconnect( name, url(file) )
         haml :page, :locals => { :title => name, :file => file }
       end
     end  
