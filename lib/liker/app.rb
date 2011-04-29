@@ -76,16 +76,40 @@ __END__
     %a{ :href => ("/#{name}") }= name
 
 @@ page
+%link{ :rel => "stylesheet", :href => "/table.css", :type => "text/css" }
+%div#header
+  %h1.title= title
+%table{ :cellspacing => 0, :cellpadding => 0, :border => 0 }
+  %tr
+    %td.content
+      %div.photo
+        %img{ :src => ("/#{file}"), :"max-width" => "640", :"max-height" => "640" }
+    %td.menu
+      %fb:like{ :href => @like_url, :show_faces => true, :width => 300, :send => 1 }
+      %br
+      %br
+      %fb:recommendations{ :site => @this_domain, :width => 300, :height => 300, :header => "true" }
+      %br
+      %br
+      %fb:activity{ :site => @this_domain, :width => "300", :height => "300", :header => "true", :recommendations => "false" }
+      %br
+      %br
+      %fb:comments{ :href => @like_url, :num_posts => 2, :width => 300 }
+%div#footer
+%div#fb-root
+%script{ :src => "http://connect.facebook.net/en_US/all.js#appId=199890130028792&amp;xfbml=1" }
+
+@@ page2
 %link{ :rel => "stylesheet", :href => "/two.css", :type => "text/css" }
 %div#header
   %h1.title= title
-%div.colmask.rightmenu
+%div.colmaskX.rightmenuX
   %div.colleft
     %div.col1wrap
       %div.col1
         %div.photo
           %img{ :src => ("/#{file}"), :"max-width" => "640", :"max-height" => "640" }
-  %div.col2
+  %div.col2X
     %fb:like{ :href => @like_url, :show_faces => true, :width => 300 }
     %br
     %fb:recommendations{ :site => @this_domain, :width => 300, :height => 300, :header => "true" }
