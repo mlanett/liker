@@ -1,6 +1,5 @@
-# http://www.sinatrarb.com/intro
 require "rack/fiber_pool"
-require "sinatra/base"
+require "sinatra/base" # http://www.sinatrarb.com/intro
 
 module Liker
   class App < Sinatra::Base
