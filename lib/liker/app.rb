@@ -30,6 +30,8 @@ module Liker
     end
     
     configure :development, :test do
+      require "sinatra/reloader"
+      register Sinatra::Reloader
       set :logging,         true
       set :raise_errors,    true
       set :show_exceptions, true
