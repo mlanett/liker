@@ -1,3 +1,5 @@
+$: << File.expand_path("../lib", __FILE__)
+
 require File.dirname(__FILE__) + '/lib/liker' # Bundler and App
 
 # Note: if you see an error like "undefined method associate_callback_target",
