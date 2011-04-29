@@ -6,13 +6,13 @@ module Liker
     
     use Rack::FiberPool, :size => 10
     
-    set :logging, true
-    set :raise_errors, true
-    set :show_exceptions, true
-    set :public, "public"
-    enable :inline_templates
-    
     configure do
+      set :inline_templates,  true
+      set :logging,           true
+      set :public,            "public"
+      set :raise_errors,      true
+      set :show_exceptions,   true
+      
       @@photos = {}
       pubdir = File.expand_path("../../../public", __FILE__)
       Dir.entries( pubdir ).each do |filename|  # bar.ext

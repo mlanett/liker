@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
 
-puts "#{$0} Requiring Liker"
-require File.dirname(__FILE__) + '/../lib/liker'
+$: << File.expand_path("../../lib", __FILE__)
 
-puts "#{$0} Requiring Thin"
+require File.dirname(__FILE__) + '/../lib/liker'
 require 'thin'
 
 rackup_file = "#{ File.dirname(__FILE__) }/../config.ru" # ./bin/foo -> ./config.ru
@@ -14,5 +13,4 @@ rackup_file = "#{ File.dirname(__FILE__) }/../config.ru" # ./bin/foo -> ./config
 # Other options: --debug --trace
 
 argv = [ "-R", rackup_file ] + ARGV
-puts "#{$0} Running Thin with #{argv.inspect}"
 Thin::Runner.new( argv ).run! # @see http://code.macournoyer.com/thin/doc/classes/Thin/Runner.html
