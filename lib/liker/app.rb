@@ -1,14 +1,20 @@
 require "erb"
 require "rack/fiber_pool" # fibers
 require "sinatra/base" # http://www.sinatrarb.com/intro
+require "logger"
 
 module Liker
   class App < Sinatra::Base
     
+    LIKER_ML = 144834555585360
+    LIKER_B  = 199890130028792
+    
+    use Rack::CommonLogger, Logger.new(STDOUT)
     use Rack::FiberPool, :size => 100 # fibers
     
     configure do
-      set :app_file, __FILE__ # or could set public and views
+      set :app_id,            development? && LIKER_ML || LIKER_B
+      set :app_file,          __FILE__ # or could set public and views
       set :inline_templates,  true
       set :public,            "public"
       
@@ -30,6 +36,7 @@ module Liker
     
     helpers do
       def fbconnect( title, image )
+        @this_app_id = settings.development? && LIKER_ML || LIKER_B
         @this_domain = request.host
         @like_url    = request.url
         @like_title  = title
@@ -64,8 +71,7 @@ __END__
       %meta{ :property => "og:url",       :content => @like_url }
       %meta{ :property => "og:image",     :content => @like_image }
       %meta{ :property => "og:site_name", :content => "Liker" }
-      %meta{ :property => "fb:app_id",    :content => "199890130028792" }
-      %meta{ :property => "fb:admins",    :content => "1664736154" }
+      %meta{ :property => "fb:app_id",    :content => @this_app_id }
   %body
     %div#wrapper
       = yield
