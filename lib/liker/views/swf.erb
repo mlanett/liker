@@ -1,0 +1,41 @@
+<% width     = 150 %>
+<% height    = 32 %>
+<% flashvars = {} %>
+<% flashvars["assumeSuccessTimeout"]  = 0 %>
+<% flashvars["buttonAction"]          = -110 %>
+<% flashvars["buttonCursor"]          = -2 %>
+<% flashvars["buttonDisabled"]        = false %>
+<% flashvars["buttonHeight"]          = height %>
+<% flashvars["buttonImageURL"]        = "http://liker.mlanett.contextoptional.com/Dilbert.png" # "http://upload.contextoptional.com/i_contest___nikki_send_test_58261/assets/20110506215304.jpeg" %>
+<% flashvars["buttonText"]            = "<span class='x'>&nbsp;</span>" %>
+<% flashvars["buttonTextLeftPadding"] = 0 %>
+<% flashvars["buttonTextStyle"]       = ".x { font-family: \"Lucida Grande\", Tahoma, Verdana, \"Sans Serif\"; font-size: 12px; text-align: center; font-weight: bold; color: #FFFFFF;}" %>
+<% flashvars["buttonTextTopPadding"]  = 3 %>
+<% flashvars["buttonWidth"]           = width %>
+<% flashvars["debugEnabled"]          = false %>
+<% flashvars["filePostName"]          = "Filedata" %>
+<% flashvars["fileQueueLimit"]        = 1 %>
+<% flashvars["fileSizeLimit"]         = 0 %>
+<% flashvars["fileTypes"]             = "*.jpg; *.jpeg; *.png; *.gif" %>
+<% flashvars["fileTypesDescription"]  = "JPG, GIF, and PNG files only." %>
+<% flashvars["fileUploadLimit"]       = 0 %>
+<% flashvars["httpSuccess"]           = "httpSuccess" %>
+<% flashvars["movieName"]             = "SWFUpload_0" %>
+<% flashvars["params"]                = "dir=i_contest___nikki_send_test_58261" %>
+<% flashvars["requeueOnError"]        = true %>
+<% flashvars["uploadURL"]             = "http://uploads.contextoptional.com:80/upload" %>
+<% flashvars["useQueryString"]        = false %>
+<% flashvars["scale"]                 = "noscale" %>
+<% flashvars = CGI.escape_html( flashvars.map { |k,v| [ CGI.escape(k), CGI.escape(v.to_s) ].join("=") }.join("&") ) %>
+
+<div style="border: 1px solid black; display: inline-block" >
+
+<object id="SWFUpload_0" type="application/x-shockwave-flash" data="http://a2.apps.sms.contextoptional.com/swf/swfupload.swf?1303174370" width="<%= width %>" height="<%= height %>" class="swfupload">
+  <param name="wmode" value="window">
+  <param name="movie" value="http://a2.apps.sms.contextoptional.com/swf/swfupload.swf?1303174370">
+  <param name="quality" value="high">
+  <param name="allowScriptAccess" value="always">
+  <param name="flashvars" value="<%= flashvars %>">
+</object>
+
+</div>

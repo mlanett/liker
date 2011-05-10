@@ -1,3 +1,4 @@
+require "cgi"
 require "clogger"
 require "erb"
 require "logger"
@@ -57,6 +58,10 @@ module Liker
     get "/" do
       set_og_headers :og_title => "Liker", :og_type => "website"
       haml :index, :locals => { :photos => @@photos }
+    end
+    
+    get "/swf" do
+      erb :swf
     end
     
     get "/triptych" do
