@@ -2,7 +2,8 @@
   %head
     %title= @graph[:og_title]
     - @graph.each do |property, content|
-      %meta{ :property => property.to_s.sub("_",":"), :content => content.to_s }
+      - if property =~ /^(fb|og)_/ then
+        %meta{ :property => property.to_s.sub("_",":"), :content => content.to_s }
   %body
     %div#wrapper
       = yield
