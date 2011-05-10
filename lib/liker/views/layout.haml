@@ -1,7 +1,7 @@
 %html{ :xmlns => "http://www.w3.org/1999/xhtml", :"xmlns:og" => "http://ogp.me/ns#", :"xmlns:fb" => "http://www.facebook.com/2008/fbml" }
   %head
-    %title= @graph[:og_title]
-    - @graph.each do |property, content|
+    %title= @og[:og_title]
+    - @og.each do |property, content|
       - if property =~ /^(fb|og)_/ then
         %meta{ :property => property.to_s.sub("_",":"), :content => content.to_s }
   %body

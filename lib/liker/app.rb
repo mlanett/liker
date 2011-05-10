@@ -38,7 +38,7 @@ module Liker
     helpers do
       # @see http://developers.facebook.com/docs/opengraph/
       # Should have title, type, image, url, site_name
-      @@graph_default = {
+      @@og_default = {
         :fb_admins    => "1664736154",
         :fb_app_id    => settings.development? ? LIKER_ML : LIKER_B,
         #og_image     => "http://www.example.com/logo.gif",
@@ -47,17 +47,21 @@ module Liker
         :og_type      => "product",
         :og_url       => "http://www.example.com/"
       }
+      def set_og_headers( options = {} )
+        @og = @@og_default.merge( :og_url => request.url, :site => request.host ).merge( options )
+        puts @og.inspect
+      end
     end
     
     get "/" do
-      @graph = @@graph_default.merge :og_url => request.url, :og_title => "Liker", :og_type => "website", :site => request.host
+      set_og_headers :og_title => "Liker", :og_type => "website"
       haml :index, :locals => { :photos => @@photos }
     end
 
     get "/:name" do
       name = params[:name]
       if file = @@photos[name] then
-        @graph = @@graph_default.merge :og_url => request.url, :og_title => name, :og_image => url(file), :site => request.host
+        set_og_headers :og_title => name, :og_image => url(file)
         haml :page, :locals => { :file => file }
       end
     end  

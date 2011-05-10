@@ -1,12 +1,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" "xmlns:og"="http://ogp.me/ns#" "xmlns:fb"="http://www.facebook.com/2008/fbml" >
   
   <head>
-    <title> <%= @title -%> </title>
-    <% if @like_url then %>
-      <meta property="og:title"     content="<%= @like_title -%>" />
+    <title> <%= @og[:og_title] -%> </title>
+    <% if @og[:og_href] then %>
+      <meta property="og:title"     content="<%= @og[:og_title] -%>" />
       <meta property="og:type"      content="blog" />
-      <meta property="og:url"       content="<%= @like_url -%>" />
-      <meta property="og:image"     content="<%= @like_image -%>" />
+      <meta property="og:url"       content="<%= @og[:og_url] -%>" />
+      <meta property="og:image"     content="<%= @og[:og_image] -%>" />
       <meta property="og:site_name" content="Liker" />
       <meta property="fb:app_id"    content="199890130028792" />
       <meta property="fb:admins"    content="1664736154" />
@@ -18,7 +18,7 @@
     <div id="wrapper" >
       
       %div id="header"
-        %h1.title= title
+        %h1.title= @og[:og_title]
       %div.colmask.rightmenu
         %div.colleft
           %div.col1wrap
@@ -26,13 +26,13 @@
               %div.photo
                 %img{ :src => ("/#{file}"), :"max-width" => "640", :"max-height" => "640" }
         %div.col2
-          %fb:like{ :href => @like_url, :show_faces => true, :width => 300 }
+          %fb:like{ :href => @og[:og_url], :show_faces => true, :width => 300 }
           %br
-          %fb:recommendations{ :site => @this_domain, :width => 300, :height => 300, :header => "true" }
+          %fb:recommendations{ :site => @og[:og_site_name], :width => 300, :height => 300, :header => "true" }
           %br
-          %fb:activity{ :site => @this_domain, :width => "300", :height => "300", :header => "true", :recommendations => "false" }
+          %fb:activity{ :site => @og[:og_site_name], :width => "300", :height => "300", :header => "true", :recommendations => "false" }
           %br
-          %fb:comments{ :href => @like_url, :num_posts => 2, :width => 300 }
+          %fb:comments{ :href => @og[:og_url], :num_posts => 2, :width => 300 }
       <div id="footer"></div>
       <div id="fb-root"></div>
       %script{ :src => "http://connect.facebook.net/en_US/all.js#appId=199890130028792&amp;xfbml=1" }
