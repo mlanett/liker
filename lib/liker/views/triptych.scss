@@ -40,6 +40,8 @@ $left_column:       200px;
 $right_column:      200px;
 $llmargin:          15px;
 $lrmargin:          15px;
+$mlmargin:          15px;
+$mrmargin:          15px;
 $rlmargin:          15px;
 $rrmargin:          15px;
 
@@ -63,7 +65,7 @@ $rrmargin:          15px;
 
 /* 3 column settings */
 .triptych {
-  background:       lightyellow; /* Right column background colour */
+  background:       lightgreen; /* Right column background colour */
 }
 
 .triptych .colmid {
@@ -93,7 +95,7 @@ $rrmargin:          15px;
 }
 
 .triptych .col1 {
-  margin:           0 215px; /* Centre column side padding:
+  margin:           0 ($right_column + $mrmargin) 0 ($left_column + $mlmargin); /* Centre column side padding:
   Left padding = left column width + centre column left padding width
   Right padding = right column width + centre column right padding width */
   position:         relative;
@@ -104,16 +106,16 @@ $rrmargin:          15px;
 .triptych .col2 {
   float:            left;
   float:            right; /* This overrides the float:left above */
-  width:            170px; /* Width of left column content (left column width minus left and right padding) */
+  width:            $left_column - $llmargin - $lrmargin; /* Width of left column content (left column width minus left and right padding) */
   position:         relative;
-  right:            15px; /* Width of the left-had side padding on the left column */
+  right:            $llmargin; /* Width of the left-had side padding on the left column */
 }
 
 .triptych .col3 {
   float:            left;
   float:            right; /* This overrides the float:left above */
-  width:            170px; /* Width of right column content (right column width minus left and right padding) */
-  margin-right:     45px; /* Width of right column right-hand padding + left column left and right padding */
+  width:            $right_column - $rlmargin - $rrmargin; /* Width of right column content (right column width minus left and right padding) */
+  margin-right:     $rrmargin + $llmargin + $lrmargin; /* Width of right column right-hand padding + left column left and right padding */
   position:         relative;
   left:             50%;
 }

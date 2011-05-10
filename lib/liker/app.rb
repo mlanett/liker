@@ -58,7 +58,11 @@ module Liker
       set_og_headers :og_title => "Liker", :og_type => "website"
       haml :index, :locals => { :photos => @@photos }
     end
-
+    
+    get "/triptych" do
+      erb :triptych
+    end
+    
     get "/:stylesheet.css" do
       scss params[:stylesheet].to_sym
     end
