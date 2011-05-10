@@ -6,3 +6,7 @@ gem "rack-fiber_pool"
 gem "sinatra"
 gem "sinatra-reloader"
 gem "thin"
+
+group :development do
+  gem "ruby-debug19"
+end

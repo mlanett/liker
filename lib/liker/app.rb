@@ -10,7 +10,7 @@ module Liker
     LIKER_ML = 144834555585360
     LIKER_B  = 199890130028792
     
-    use Rack::FiberPool, :size => 100 # fibers
+    #use Rack::FiberPool, :size => 100 # fibers
     use Clogger, :format => '$status "$request" ($request_time)', :logger => $stdout, :reentrant => true
     
     configure do
@@ -47,7 +47,8 @@ module Liker
         :og_url       => "http://www.example.com/"
       }
       def set_og_headers( options = {} )
-        @og = @@og_default.merge( :og_url => request.url, :site => request.host ).merge( options )
+        # puts request.env.map { |i| i.join("=") }.join("\n")
+        @og = @@og_default.merge( :og_url => request.url, :site => "#{request.scheme}://#{request.host_with_port}" ).merge( options )
         puts @og.inspect
       end
     end
