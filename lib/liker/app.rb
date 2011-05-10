@@ -48,8 +48,8 @@ module Liker
       }
       def set_og_headers( options = {} )
         # puts request.env.map { |i| i.join("=") }.join("\n")
-        @og = @@og_default.merge( :og_url => request.url, :site => "#{request.scheme}://#{request.host_with_port}" ).merge( options )
-        puts @og.inspect
+        @og = @@og_default.merge( :og_url => request.url, :og_image => url("logo.jpg"), :site => "#{request.scheme}://#{request.host_with_port}" ).merge( options )
+        # puts @og.inspect
       end
     end
     
