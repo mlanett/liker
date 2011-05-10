@@ -60,7 +60,7 @@ module Liker
     end
     
     get "/triptych" do
-      erb :triptych
+      erb :triptych, :layout => false
     end
     
     get "/:stylesheet.css" do

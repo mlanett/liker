@@ -1,5 +1,9 @@
 /* General styles */
 
+html, body {
+  height:           100%;
+}
+
 body {
   margin:           0;
   padding:          0;
@@ -21,17 +25,18 @@ a:hover {
 }
 
 h1, h2, h3 {
-  margin: .8em 0 .2em 0;
-  padding: 0;
+  border:           1px dotted gray;
+  padding:          .8em 0 .2em 0;
+  margin:           0;
 }
 
 p {
-  margin: .4em 0 .8em 0;
-  padding: 0;
+  margin:           .4em 0 .8em 0;
+  padding:          0;
 }
 
 img {
-  margin: 10px 0 5px;
+  margin:           10px 0 5px;
 }
 
 /* 3 column layout */
@@ -44,6 +49,14 @@ $mlmargin:          15px;
 $mrmargin:          15px;
 $rlmargin:          15px;
 $rrmargin:          15px;
+$footer_height:     32px;
+
+#wrapper {
+  min-height:       100%;
+  height:           auto !important; /* IE6 hack */
+  height:           100%; /* IE6 hack */
+  margin:           0 auto (-$footer_height) auto; /* the bottom margin is the negative value of the footer's height */
+}
 
 /* Header styles */
 
@@ -122,9 +135,16 @@ $rrmargin:          15px;
 
 /* Footer styles */
 
+#push, #footer {
+  clear:            both;
+  height:           $footer_height; /* #push must be the same height as #footer */
+}
+
 #footer {
   clear:            both;
   float:            left;
   width:            100%;
-  border-top:       1px solid black;
 }
+
+/* 3 Column Liquid Layout http://matthewjamestaylor.com/blog/ultimate-3-column-holy-grail-pixels.htm */
+/* Sticky Footer by Ryan Fait http://ryanfait.com/ */
