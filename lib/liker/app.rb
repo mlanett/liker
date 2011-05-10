@@ -2,6 +2,7 @@ require "clogger"
 require "erb"
 require "logger"
 require "rack/fiber_pool" # fibers
+require "sass"
 require "sinatra/base" # http://www.sinatrarb.com/intro
 
 module Liker
@@ -58,6 +59,10 @@ module Liker
       haml :index, :locals => { :photos => @@photos }
     end
 
+    get "/:stylesheet.css" do
+      scss params[:stylesheet].to_sym
+    end
+    
     get "/:name" do
       name = params[:name]
       if file = @@photos[name] then

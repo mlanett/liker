@@ -1,0 +1,128 @@
+/* General styles */
+
+body {
+  margin:           0;
+  padding:          0;
+  border:           0; /* This removes the border around the viewport in old versions of IE */
+  width:            100%;
+  background:       white;
+  min-width:        1024px; /* Minimum width of layout - remove line if not required */
+  font-size:        90%;
+}
+
+a {
+  color:            blue;
+  text-decoration:  none;
+}
+
+a:hover {
+  color:            blue;
+  text-decoration:  underline;
+}
+
+h1, h2, h3 {
+  margin: .8em 0 .2em 0;
+  padding: 0;
+}
+
+p {
+  margin: .4em 0 .8em 0;
+  padding: 0;
+}
+
+img {
+  margin: 10px 0 5px;
+}
+
+/* 3 column layout */
+
+$left_column:       200px;
+$right_column:      200px;
+$llmargin:          15px;
+$lrmargin:          15px;
+$rlmargin:          15px;
+$rrmargin:          15px;
+
+/* Header styles */
+
+#header {
+  clear:            both;
+  float:            left;
+  width:            100%;
+  border-bottom:    1px solid black;
+}
+
+/* column container */
+.colmask {
+  position:         relative; /* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
+  clear:            both;
+  float:            left;
+  width:            100%; /* width of whole page */
+  overflow:         hidden; /* This chops off any overhanging divs */
+}
+
+/* 3 column settings */
+.triptych {
+  background:       lightyellow; /* Right column background colour */
+}
+
+.triptych .colmid {
+  float:            left;
+  width:            200%;
+  margin-left:      -$right_column; /* Width of right column */
+  position:         relative;
+  right:            100%;
+  background:       white; /* Centre column background colour */
+}
+
+.triptych .colleft {
+  float:            left;
+  width:            100%;
+  margin-left:      -50%;
+  position:         relative;
+  left:             $left_column + $right_column; /* Left column width + right column width */
+  background:       lightpink; /* Left column background colour */
+}
+
+.triptych .col1wrap {
+  float:            left;
+  width:            50%;
+  position:         relative;
+  right:            $left_column; /* Width of left column */
+  padding-bottom:   1em; /* Centre column bottom padding. Leave it out if it's zero */
+}
+
+.triptych .col1 {
+  margin:           0 215px; /* Centre column side padding:
+  Left padding = left column width + centre column left padding width
+  Right padding = right column width + centre column right padding width */
+  position:         relative;
+  left:             200%;
+  overflow:         hidden;
+}
+
+.triptych .col2 {
+  float:            left;
+  float:            right; /* This overrides the float:left above */
+  width:            170px; /* Width of left column content (left column width minus left and right padding) */
+  position:         relative;
+  right:            15px; /* Width of the left-had side padding on the left column */
+}
+
+.triptych .col3 {
+  float:            left;
+  float:            right; /* This overrides the float:left above */
+  width:            170px; /* Width of right column content (right column width minus left and right padding) */
+  margin-right:     45px; /* Width of right column right-hand padding + left column left and right padding */
+  position:         relative;
+  left:             50%;
+}
+
+/* Footer styles */
+
+#footer {
+  clear:            both;
+  float:            left;
+  width:            100%;
+  border-top:       1px solid black;
+}
