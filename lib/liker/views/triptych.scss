@@ -7,7 +7,7 @@ html, body {
 body {
   margin:           0;
   padding:          0;
-  border:           0; /* This removes the border around the viewport in old versions of IE */
+  border:           0; /* IE6 */
   width:            100%;
   background:       white;
   min-width:        1024px; /* Minimum width of layout - remove line if not required */
@@ -53,8 +53,8 @@ $footer_height:     32px;
 
 #wrapper {
   min-height:       100%;
-  height:           auto !important; /* IE6 hack */
-  height:           100%; /* IE6 hack */
+  height:           auto !important; /* IE6 */
+  height:           100%; /* IE6 */
   margin:           0 auto (-$footer_height) auto; /* the bottom margin is the negative value of the footer's height */
 }
 
@@ -69,7 +69,7 @@ $footer_height:     32px;
 
 /* column container */
 .colmask {
-  position:         relative; /* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
+  position:         relative; /* IE7 overflow hidden bug */
   clear:            both;
   float:            left;
   width:            100%; /* width of whole page */
@@ -84,7 +84,7 @@ $footer_height:     32px;
 .triptych .colmid {
   float:            left;
   width:            200%;
-  margin-left:      -$right_column; /* Width of right column */
+  margin-left:      -$right_column;
   position:         relative;
   right:            100%;
   background:       white; /* Centre column background colour */
@@ -95,7 +95,7 @@ $footer_height:     32px;
   width:            100%;
   margin-left:      -50%;
   position:         relative;
-  left:             $left_column + $right_column; /* Left column width + right column width */
+  left:             $left_column + $right_column;
   background:       lightpink; /* Left column background colour */
 }
 
@@ -103,14 +103,12 @@ $footer_height:     32px;
   float:            left;
   width:            50%;
   position:         relative;
-  right:            $left_column; /* Width of left column */
+  right:            $left_column;
   padding-bottom:   1em; /* Centre column bottom padding. Leave it out if it's zero */
 }
 
 .triptych .col1 {
-  margin:           0 ($right_column + $mrmargin) 0 ($left_column + $mlmargin); /* Centre column side padding:
-  Left padding = left column width + centre column left padding width
-  Right padding = right column width + centre column right padding width */
+  margin:           0 ($right_column + $mrmargin) 0 ($left_column + $mlmargin);
   position:         relative;
   left:             200%;
   overflow:         hidden;
@@ -119,16 +117,16 @@ $footer_height:     32px;
 .triptych .col2 {
   float:            left;
   float:            right; /* This overrides the float:left above */
-  width:            $left_column - $llmargin - $lrmargin; /* Width of left column content (left column width minus left and right padding) */
+  width:            $left_column - $llmargin - $lrmargin;
   position:         relative;
-  right:            $llmargin; /* Width of the left-had side padding on the left column */
+  right:            $llmargin;
 }
 
 .triptych .col3 {
   float:            left;
   float:            right; /* This overrides the float:left above */
-  width:            $right_column - $rlmargin - $rrmargin; /* Width of right column content (right column width minus left and right padding) */
-  margin-right:     $rrmargin + $llmargin + $lrmargin; /* Width of right column right-hand padding + left column left and right padding */
+  width:            $right_column - $rlmargin - $rrmargin;
+  margin-right:     $rrmargin + $llmargin + $lrmargin;
   position:         relative;
   left:             50%;
 }
@@ -137,7 +135,7 @@ $footer_height:     32px;
 
 #push, #footer {
   clear:            both;
-  height:           $footer_height; /* #push must be the same height as #footer */
+  height:           $footer_height; /* push must be the same height as footer */
 }
 
 #footer {
