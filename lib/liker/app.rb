@@ -14,9 +14,6 @@ module Liker
     use Clogger, :format => '$status "$request" ($request_time)', :logger => $stdout, :reentrant => true
     
     configure do
-      set :public,            File.expand_path("../../../public", __FILE__)
-      set :views,             File.expand_path("../views", __FILE__)
-      
       @@photos = {}
       pubdir = File.expand_path("../../../public", __FILE__)
       Dir.entries( pubdir ).each do |filename|  # bar.ext
@@ -25,6 +22,8 @@ module Liker
           @@photos[name] = filename             # bar = bar.ext
         end
       end
+      set :public, File.expand_path("../../../public", __FILE__)
+      set :views,  File.expand_path("../views", __FILE__)
     end
     
     configure :development, :test do
@@ -37,7 +36,7 @@ module Liker
     
     helpers do
       # @see http://developers.facebook.com/docs/opengraph/
-      # Should have title, type, image, url, site_name
+      # Should have title, type, image, url, site_name; description recommended
       @@og_default = {
         :fb_admins    => "1664736154",
         :fb_app_id    => settings.development? ? LIKER_ML : LIKER_B,
