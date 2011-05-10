@@ -1,0 +1,32 @@
+#wrapper
+  #header
+    %h1.title= @og[:og_title]
+  .colmask.triptych
+    .colmid
+      .colleft
+        .col1wrap
+
+          .col1
+            %div.photo
+              %img{ :src => ("/#{file}"), :"max-width" => "640", :"max-height" => "640" }
+
+        .col2
+          %h2 Column 2
+
+        .col3
+          %h2 Column 3
+          %fb:like{ :href => @og[:og_url], :show_faces => true, :width => 270, :send => 1 }
+          %br
+          %br
+          %fb:recommendations{ :site => @og[:site], :width => 270, :height => 270, :header => true }
+          %br
+          %br
+          %fb:activity{ :site => @og[:site], :width => 270, :height => 270, :header => true, :recommendations => false }
+          %br
+          %br
+          %fb:comments{ :href => @og[:og_url], :num_posts => 2, :width => 270 }
+
+  #push
+
+#footer
+  %p Thanks!

@@ -3,7 +3,13 @@
     %title= @og[:og_title]
     - @og.each do |property, content|
       - if property =~ /^(fb|og)_/ then
-        %meta{ :property => property.to_s.sub("_",":"), :content => content.to_s }
+        %meta{ :content => content.to_s, :property => property.to_s.sub("_",":") }/
+    %meta{ :content => "application/xhtml+xml; charset=utf-8", "http-equiv" => "Content-Type" }/
+    %link{ :href => "/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }/
+    %link{ :href => "/triptych.css", :rel => "stylesheet", :type => "text/css" }/
+    /[if lt IE 7]
+      %link{ :href => "/triptych.ie6.css", :rel => "stylesheet", :type => "text/css" }/
   %body
-    %div#wrapper
-      = yield
+    = yield
+    #fb-root
+    %script{ :src => "http://connect.facebook.net/en_US/all.js#appId=#{@og[:fb_app_id]}&amp;xfbml=1" }

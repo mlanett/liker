@@ -67,6 +67,14 @@ module Liker
       scss params[:stylesheet].to_sym
     end
     
+    get "/3/:name" do
+      name = params[:name]
+      if file = @@photos[name] then
+        set_og_headers :og_title => name, :og_image => url(file)
+        haml :page3, :locals => { :file => file }
+      end
+    end  
+    
     get "/:name" do
       name = params[:name]
       if file = @@photos[name] then

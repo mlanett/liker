@@ -25,7 +25,6 @@ a:hover {
 }
 
 h1, h2, h3 {
-  border:           1px dotted gray;
   padding:          .8em 0 .2em 0;
   margin:           0;
 }
@@ -41,8 +40,8 @@ img {
 
 /* 3 column layout */
 
-$left_column:       200px;
-$right_column:      200px;
+$left_column:       100px;
+$right_column:      300px;
 $llmargin:          15px;
 $lrmargin:          15px;
 $mlmargin:          15px;
@@ -78,7 +77,7 @@ $footer_height:     32px;
 
 /* 3 column settings */
 .triptych {
-  background:       lightgreen; /* Right column background colour */
+  background:       #f8f8f8; /* Right column background colour */
 }
 
 .triptych .colmid {
@@ -96,7 +95,7 @@ $footer_height:     32px;
   margin-left:      -50%;
   position:         relative;
   left:             $left_column + $right_column;
-  background:       lightpink; /* Left column background colour */
+  background:       #f8f8f8; /* Left column background colour */
 }
 
 .triptych .col1wrap {
