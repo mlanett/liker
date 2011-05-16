@@ -1,6 +1,7 @@
 *.gem
 .bundle
 .DS_Store
+.sass-cache
 log
 pkg/*
 public/*.jpeg

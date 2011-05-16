@@ -1,0 +1,147 @@
+/* General styles */
+
+html, body {
+  height:           100%;
+}
+
+body {
+  margin:           0;
+  padding:          0;
+  border:           0; /* IE6 */
+  width:            100%;
+  background:       white;
+  min-width:        1024px; /* Minimum width of layout - remove line if not required */
+  font-size:        90%;
+}
+
+a {
+  color:            blue;
+  text-decoration:  none;
+}
+
+a:hover {
+  color:            blue;
+  text-decoration:  underline;
+}
+
+h1, h2, h3 {
+  padding:          .8em 0 .2em 0;
+  margin:           0;
+}
+
+p {
+  margin:           .4em 0 .8em 0;
+  padding:          0;
+}
+
+img {
+  margin:           10px 0 5px;
+}
+
+/* 3 column layout */
+
+$left_column:       100px;
+$right_column:      300px;
+$llmargin:          15px;
+$lrmargin:          15px;
+$mlmargin:          15px;
+$mrmargin:          15px;
+$rlmargin:          15px;
+$rrmargin:          15px;
+$footer_height:     32px;
+
+#wrapper {
+  min-height:       100%;
+  height:           auto !important; /* IE6 */
+  height:           100%; /* IE6 */
+  margin:           0 auto (-$footer_height) auto; /* the bottom margin is the negative value of the footer's height */
+}
+
+/* Header styles */
+
+#header {
+  clear:            both;
+  float:            left;
+  width:            100%;
+  border-bottom:    1px solid black;
+}
+
+/* column container */
+.colmask {
+  position:         relative; /* IE7 overflow hidden bug */
+  clear:            both;
+  float:            left;
+  width:            100%; /* width of whole page */
+  overflow:         hidden; /* This chops off any overhanging divs */
+}
+
+/* 3 column settings */
+.triptych {
+  background:       #f8f8f8; /* Right column background colour */
+}
+
+.triptych .colmid {
+  float:            left;
+  width:            200%;
+  margin-left:      -$right_column;
+  position:         relative;
+  right:            100%;
+  background:       white; /* Centre column background colour */
+}
+
+.triptych .colleft {
+  float:            left;
+  width:            100%;
+  margin-left:      -50%;
+  position:         relative;
+  left:             $left_column + $right_column;
+  background:       #f8f8f8; /* Left column background colour */
+}
+
+.triptych .col1wrap {
+  float:            left;
+  width:            50%;
+  position:         relative;
+  right:            $left_column;
+  padding-bottom:   1em; /* Centre column bottom padding. Leave it out if it's zero */
+}
+
+.triptych .col1 {
+  margin:           0 ($right_column + $mrmargin) 0 ($left_column + $mlmargin);
+  position:         relative;
+  left:             200%;
+  overflow:         hidden;
+}
+
+.triptych .col2 {
+  float:            left;
+  float:            right; /* This overrides the float:left above */
+  width:            $left_column - $llmargin - $lrmargin;
+  position:         relative;
+  right:            $llmargin;
+}
+
+.triptych .col3 {
+  float:            left;
+  float:            right; /* This overrides the float:left above */
+  width:            $right_column - $rlmargin - $rrmargin;
+  margin-right:     $rrmargin + $llmargin + $lrmargin;
+  position:         relative;
+  left:             50%;
+}
+
+/* Footer styles */
+
+#push, #footer {
+  clear:            both;
+  height:           $footer_height; /* push must be the same height as footer */
+}
+
+#footer {
+  clear:            both;
+  float:            left;
+  width:            100%;
+}
+
+/* 3 Column Liquid Layout http://matthewjamestaylor.com/blog/ultimate-3-column-holy-grail-pixels.htm */
+/* Sticky Footer by Ryan Fait http://ryanfait.com/ */

@@ -1,6 +1,6 @@
 %link{ :rel => "stylesheet", :href => "/two.css", :type => "text/css" }
 %div#header
-  %h1.title= title
+  %h1.title= @og[:og_title]
 %div.colmaskX.rightmenuX
   %div.colleft
     %div.col1wrap
@@ -8,13 +8,13 @@
         %div.photo
           %img{ :src => ("/#{file}"), :"max-width" => "640", :"max-height" => "640" }
   %div.col2X
-    %fb:like{ :href => @like_url, :show_faces => true, :width => 300 }
+    %fb:like{ :href => @og[:og_url], :show_faces => true, :width => 300 }
     %br
-    %fb:recommendations{ :site => @this_domain, :width => 300, :height => 300, :header => "true" }
+    %fb:recommendations{ :site => @og[:og_site_name], :width => 300, :height => 300, :header => "true" }
     %br
-    %fb:activity{ :site => @this_domain, :width => "300", :height => "300", :header => "true", :recommendations => "false" }
+    %fb:activity{ :site => @og[:og_site_name], :width => "300", :height => "300", :header => "true", :recommendations => "false" }
     %br
-    %fb:comments{ :href => @like_url, :num_posts => 2, :width => 300 }
+    %fb:comments{ :href => @og[:og_url], :num_posts => 2, :width => 300 }
 %div#footer
 %div#fb-root
 %script{ :src => "http://connect.facebook.net/en_US/all.js#appId=199890130028792&amp;xfbml=1" }

@@ -1,0 +1,22 @@
+%link{ :rel => "stylesheet", :href => "/table.css", :type => "text/css" }
+%div#header
+  %h1.title= @og[:og_title]
+%table{ :cellspacing => 0, :cellpadding => 0, :border => 0 }
+  %tr
+    %td.content
+      %div.photo
+        %img{ :src => ("/#{file}"), :"max-width" => "640", :"max-height" => "640" }
+    %td.menu
+      %fb:like{ :href => @og[:og_url], :show_faces => true, :width => 300, :send => 1 }
+      %br
+      %br
+      %fb:recommendations{ :site => @og[:site], :width => 300, :height => 300, :header => "true" }
+      %br
+      %br
+      %fb:activity{ :site => @og[:site], :width => "300", :height => "300", :header => "true", :recommendations => "false" }
+      %br
+      %br
+      %fb:comments{ :href => @og[:og_url], :num_posts => 2, :width => 300 }
+%div#footer
+%div#fb-root
+%script{ :src => "http://connect.facebook.net/en_US/all.js#appId=#{@og[:fb_app_id]}&amp;xfbml=1" }

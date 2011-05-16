@@ -1,0 +1,15 @@
+%html{ :xmlns => "http://www.w3.org/1999/xhtml", :"xmlns:og" => "http://ogp.me/ns#", :"xmlns:fb" => "http://www.facebook.com/2008/fbml" }
+  %head
+    %title= @og[:og_title]
+    - @og.each do |property, content|
+      - if property =~ /^(fb|og)_/ then
+        %meta{ :content => content.to_s, :property => property.to_s.sub("_",":") }/
+    %meta{ :content => "application/xhtml+xml; charset=utf-8", "http-equiv" => "Content-Type" }/
+    %link{ :href => "/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }/
+    %link{ :href => "/triptych.css", :rel => "stylesheet", :type => "text/css" }/
+    /[if lt IE 7]
+      %link{ :href => "/triptych.ie6.css", :rel => "stylesheet", :type => "text/css" }/
+  %body
+    = yield
+    #fb-root
+    %script{ :src => "http://connect.facebook.net/en_US/all.js#appId=#{@og[:fb_app_id]}&amp;xfbml=1" }
