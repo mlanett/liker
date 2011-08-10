@@ -59,27 +59,29 @@ module Liker
       haml :index, :locals => { :photos => @@photos }
     end
     
-    get "/triptych" do
-      erb :triptych, :layout => false
-    end
+    #get "/triptych" do
+    #  erb :triptych, :layout => false
+    #end
     
     get "/:stylesheet.css" do
       scss params[:stylesheet].to_sym
     end
     
-    get "/3/:name" do
-      name = params[:name]
-      if file = @@photos[name] then
-        set_og_headers :og_title => name, :og_image => url(file)
-        haml :page3, :locals => { :file => file }
-      end
-    end  
+    #get "/3/:name" do
+    #  name = params[:name]
+    #  if file = @@photos[name] then
+    #    set_og_headers :og_title => name, :og_image => url(file)
+    #    haml :page3, :locals => { :file => file }
+    #  end
+    #end  
     
     get "/:name" do
       name = params[:name]
       if file = @@photos[name] then
-        set_og_headers :og_title => name, :og_image => url(file)
-        haml :page, :locals => { :file => file }
+        path = url( URI.escape( file, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]") ) )
+        puts path
+        set_og_headers :og_title => name, :og_image => path
+        haml :page, :locals => { :path => path }
       end
     end  
     

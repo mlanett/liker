@@ -12,19 +12,12 @@ body {
 
 table {
   border: none;
-}
-
-table tr {
-}
-
-table tr td {
-}
-
-table tr td.content {
-  vertical-align:   top;
-}
-
-table tr td.menu {
+  
+  tr {
+    td.content {
+      vertical-align:   top;
+    }
+  }
 }
 
 #footer {
