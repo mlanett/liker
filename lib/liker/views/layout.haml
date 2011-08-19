@@ -6,10 +6,15 @@
         %meta{ :content => content.to_s, :property => property.to_s.sub("_",":") }/
     %meta{ :content => "application/xhtml+xml; charset=utf-8", "http-equiv" => "Content-Type" }/
     %link{ :href => "/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }/
-    %link{ :href => "/triptych.css", :rel => "stylesheet", :type => "text/css" }/
-    /[if lt IE 7]
-      %link{ :href => "/triptych.ie6.css", :rel => "stylesheet", :type => "text/css" }/
   %body
     = yield
     #fb-root
-    %script{ :src => "http://connect.facebook.net/en_US/all.js#appId=#{@og[:fb_app_id]}&amp;xfbml=1" }
+    %script{ :src => "http://connect.facebook.net/en_US/all.js" }
+    :javascript
+      FB.init({
+          appId  : #{@og[:fb_app_id]},
+          status : true, // check login status
+          cookie : true, // enable cookies to allow the server to access the session
+          xfbml  : true, // parse XFBML
+          oauth  : true // enable OAuth 2.0
+        });
